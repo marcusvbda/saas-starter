@@ -33,7 +33,7 @@ const application = {
     start() {
         app.use(bodyParser.json())
         app.use(cookieParser())
-        // this.mongoConfig()
+        this.mongoConfig()
         this.configCors()
         this.registryRoutes()
         app.listen(process.env.SERVER_PORT, () => {
