@@ -1,7 +1,4 @@
-import React, { useEffect, createContext, useState } from 'react'
-import Cookie from "js-cookie"
-import PT_BR from "../langs/PT_BR"
-import EN from "../langs/EN"
+import React, { createContext } from 'react'
 export const GlobalContext = createContext()
 
 const GlobalContextProvider = ({ children, app }) => {

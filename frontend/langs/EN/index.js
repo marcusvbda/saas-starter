@@ -1,5 +1,7 @@
 import navbar from "./navbar"
+import auth from "./auth"
+
 const EN = {
-    navbar
+    navbar, auth
 }
 export default EN

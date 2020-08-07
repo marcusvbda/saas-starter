@@ -6,6 +6,7 @@ import ParseCookies from '@/utils/parseCookies'
 import "@/scss/app.scss"
 import PT_BR from '@/langs/PT_BR'
 import EN from '@/langs/EN'
+import { isTrue } from "@/utils/helpers"
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
@@ -28,7 +29,8 @@ App.getInitialProps = async ({ Component, ctx }) => {
 
     const getAppConfigProps = ctx => {
         const { req } = ctx
-        const { language } = ParseCookies(req) || "PT_BR"
+        let { language } = ParseCookies(req)
+        language = isTrue(language) ? language : "PT_BR"
         const contents = { PT_BR, EN }
         return {
             language,

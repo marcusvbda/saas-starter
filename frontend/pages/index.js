@@ -1,17 +1,17 @@
 import React from 'react'
-import Template from '@/components/template'
+import Default from '@/components/templates/default'
 import Link from 'next/link'
 import { Container } from 'react-bootstrap'
 
 const Home = () => {
 
     return (
-        <Template>
+        <Default>
             {/* <HomeSection />
             <AboutSection />
             <SkillsSection />
             <RecentJobs /> */}
-        </Template >
+        </Default>
     )
 }
 export default Home

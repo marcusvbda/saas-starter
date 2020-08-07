@@ -1,14 +1,14 @@
 import React, { useContext } from 'react'
 import { GlobalContext } from '@/context/globalContext'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
-import LanguageSelector from "./languageSelector"
+import LanguageSelector from "@/components/templates/languageSelector"
 
 const _Navbar = () => {
     const { app } = useContext(GlobalContext)
 
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Navbar.Brand className="font-weight-bold" href="#home">#SocialStore</Navbar.Brand>
+            <Navbar.Brand className="font-weight-bold" href="#home">#SocialStore.</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
@@ -23,7 +23,7 @@ const _Navbar = () => {
                 </Nav>
                 <Nav>
                     <LanguageSelector />
-                    <Nav.Link eventKey={2} href="#memes">
+                    <Nav.Link eventKey={2} href="#memes" className="ml-3">
                         Dank memes
                     </Nav.Link>
                 </Nav>
