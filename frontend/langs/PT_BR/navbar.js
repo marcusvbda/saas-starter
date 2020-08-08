@@ -1,5 +1,5 @@
 const Navbar = {
     pricing: "Preços",
-    why: "Porque socialstore ?"
+    why: "Porque rocketer ?"
 }
 export default Navbar

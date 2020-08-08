@@ -9,13 +9,18 @@ const Login = () => {
     const { app } = useContext(GlobalContext)
 
     return (
-        <AuthTemplate>
+        <AuthTemplate title="Login">
             <Col xs={12} md={6}>
                 <Card>
                     <Card.Header>
-                        <div className="d-flex flex-row">
-                            <h3 className="font-weight-bold dark-gray w-100 mb-0">#SocialStore.</h3>
-                            <LanguageSelector />
+                        <div className="d-flex flex-row align-items-center">
+                            <Col md={9} sm={9}>
+                                <img src='/images/logo.png' className="w-100 d-none d-md-block" alt="rocketer" />
+                                <img src='/images/small_logo.png' className="navbar-logo d-block d-md-none" alt="rocketer" />
+                            </Col>
+                            <Col md={3} sm={3} className="d-flex justify-content-end">
+                                <LanguageSelector />
+                            </Col>
                         </div>
                     </Card.Header>
                     <Card.Body>

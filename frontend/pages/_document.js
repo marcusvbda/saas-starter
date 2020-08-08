@@ -7,20 +7,20 @@ class _Document extends Document {
     }
 
     getDescription() {
-        return "SocialStore is a ecommerce platform to social networks selling"
+        return "Rocketer is a ecommerce platform to social networks selling"
     }
 
     render() {
         return (
             <Html>
                 <Head>
-                    <link rel="icon" href="/images/favicon.jpg" />
-                    <meta property="og:image" content="/images/favicon.jpg" />
-                    <meta property="og:url" content="image/jpg" />
+                    <link rel="icon" href="/images/small_logo.png" />
+                    <meta property="og:image" content="/images/small_logo.png" />
+                    <meta property="og:url" content="image/png" />
                     <meta property="og:description" content={this.getDescription()} />
                     <meta property="og:type" content="website" />
                     <meta name="description" content={this.getDescription()} />
-                    <meta name="google-site-verification" content="EjVfNL7-L50qFZGgRVeOhwjXySQrbkU4_XTsic2lvGM" />
+                    {/* <meta name="google-site-verification" content="EjVfNL7-L50qFZGgRVeOhwjXySQrbkU4_XTsic2lvGM" /> */}
                 </Head>
                 <body>
                     <Main />

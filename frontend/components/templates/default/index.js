@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Navbar from './navbar'
 
 const Template = ({ children, title }) => {
-    const defaultTitle = "#SocialStore"
+    const defaultTitle = "Rocketer 🚀👨‍🚀"
 
     const getTitle = () => {
         if (!title) return defaultTitle

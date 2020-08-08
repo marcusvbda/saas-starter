@@ -7,8 +7,12 @@ const _Navbar = () => {
     const { app } = useContext(GlobalContext)
 
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Navbar.Brand className="font-weight-bold" href="#home">#SocialStore.</Navbar.Brand>
+        <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+            <Navbar.Brand className="py-0" href="#home">
+                <img src='/images/logo.png' className="navbar-logo d-none d-md-block" alt="rocketer" />
+                <img src='/images/small_logo.png' className="navbar-logo d-block d-md-none" alt="rocketer" />
+            </Navbar.Brand>
+            <div className="d-block d-md-none"><LanguageSelector /></div>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
@@ -22,7 +26,7 @@ const _Navbar = () => {
                     <Nav.Link href="#pricing">{app.translate.navbar.pricing}</Nav.Link>
                 </Nav>
                 <Nav>
-                    <LanguageSelector />
+                    <div className="d-none d-md-block"><LanguageSelector /></div>
                     <Nav.Link eventKey={2} href="#memes" className="ml-3">
                         Dank memes
                     </Nav.Link>
