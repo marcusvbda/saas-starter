@@ -7,6 +7,7 @@ import "@/scss/app.scss"
 import PT_BR from '@/langs/PT_BR'
 import EN from '@/langs/EN'
 import { isTrue } from "@/utils/helpers"
+import LanguageSelector from "@/components/templates/languageSelector"
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
@@ -15,6 +16,7 @@ Router.events.on('routeChangeError', () => NProgress.done())
 const App = ({ Component, pageProps, app }) => {
     return (
         <GlobalContextProvider app={app}>
+            <LanguageSelector />
             <Component {...pageProps} />
         </GlobalContextProvider>
     )

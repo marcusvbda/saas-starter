@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { Container } from 'react-bootstrap'
 
 const AuthTemplate = ({ children, title }) => {
-    const defaultTitle = "Rocketer 🚀👨‍🚀"
+    const defaultTitle = "Pixer"
 
     const getTitle = () => {
         if (!title) return defaultTitle
@@ -16,7 +16,7 @@ const AuthTemplate = ({ children, title }) => {
                 <title>{getTitle()}</title>
                 <meta property="og:title" content={getTitle()} key="title" />
             </Head>
-            <div className="bg-secondary h-100vh pt-5">
+            <div className="animated-gradient-background h-100vh pt-5">
                 <Container className="d-flex justify-content-center align-items-center">
                     {children}
                 </Container>

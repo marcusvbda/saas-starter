@@ -1,18 +1,16 @@
 import React, { useContext } from 'react'
 import { GlobalContext } from '@/context/globalContext'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
-import LanguageSelector from "@/components/templates/languageSelector"
 
 const _Navbar = () => {
     const { app } = useContext(GlobalContext)
 
     return (
-        <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Navbar.Brand className="py-0" href="#home">
-                <img src='/images/logo.png' className="navbar-logo d-none d-md-block" alt="rocketer" />
-                <img src='/images/small_logo.png' className="navbar-logo d-block d-md-none" alt="rocketer" />
+                <img src='/images/completo_horizontal_logo.png' className="navbar-logo d-none d-md-block" alt="pixer" style={{ height: 40 }} />
+                <img src='/images/small_logo.png' className="navbar-logo d-block d-md-none" alt="pixer" style={{ height: 40 }} />
             </Navbar.Brand>
-            <div className="d-block d-md-none"><LanguageSelector /></div>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
@@ -26,7 +24,6 @@ const _Navbar = () => {
                     <Nav.Link href="#pricing">{app.translate.navbar.pricing}</Nav.Link>
                 </Nav>
                 <Nav>
-                    <div className="d-none d-md-block"><LanguageSelector /></div>
                     <Nav.Link eventKey={2} href="#memes" className="ml-3">
                         Dank memes
                     </Nav.Link>

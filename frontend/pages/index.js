@@ -6,7 +6,7 @@ import { Container } from 'react-bootstrap'
 const Home = () => {
 
     return (
-        <Default>
+        <Default title="Home">
             {/* <HomeSection />
             <AboutSection />
             <SkillsSection />
