@@ -7,7 +7,7 @@ class _Document extends Document {
     }
 
     getDescription() {
-        return "Rocketer is a ecommerce platform to social networks selling"
+        return "Lorem ipsum here you have to type your page description"
     }
 
     render() {
