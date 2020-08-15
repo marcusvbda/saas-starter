@@ -26,7 +26,7 @@ const AuthTemplate = ({ title, children }) => {
                         alt="Pixer" />
                     <Nav className="ml-auto">
                         <Link href="/" >
-                            <FontAwesomeIcon icon={faTimes} style={{ fontSize: 50 }} className="cursor-pointer" />
+                            <a className="text-dark"><FontAwesomeIcon icon={faTimes} style={{ fontSize: 50 }} className="cursor-pointer" /></a>
                         </Link>
                     </Nav>
                 </Container>
