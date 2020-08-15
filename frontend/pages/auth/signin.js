@@ -10,7 +10,7 @@ const Signin = () => {
             <Container>
                 <h1 className="text-center">Registre-se</h1>
                 <div className="text-center font-weight-light mb-5">
-                    Já tem uma conta Pixer ? <Link href="/auth/login"><a>login</a></Link>
+                    Já tem uma conta Pixer 😎 ? <Link href="/auth/login"><a>login</a></Link>
                 </div>
             </Container>
         </AuthTemplate>

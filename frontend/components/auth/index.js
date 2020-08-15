@@ -7,11 +7,6 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 const AuthTemplate = ({ title, children }) => {
 
-    const GetYear = () => {
-        const date = new Date()
-        return `2020 - ${date.getFullYear()}`
-    }
-
     const GetTitle = () => {
         const defaultTitle = "Pixer"
         if (!title) return defaultTitle
@@ -27,7 +22,7 @@ const AuthTemplate = ({ title, children }) => {
             <Navbar expand="lg" bg="ligth" className="d-flex align-items-center">
                 <Container >
                     <Image src="/images/logo_clean.png"
-                        height="60"
+                        height="50"
                         alt="Pixer" />
                     <Nav className="ml-auto">
                         <Link href="/" >

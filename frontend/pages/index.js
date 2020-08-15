@@ -28,7 +28,7 @@ const Home = () => {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae sapien finibus, tincidunt justo vel, rhoncus dolor. Etiam tincidunt pulvinar metus ac mattis. Aliquam viverra consectetur libero, pulvinar sagittis ipsum egestas ac. Nunc sit amet blandit mauris. In placerat facilisis lacus sed faucibus. In quis ultrices nisl. Aliquam vestibulum in turpis luctus rutrum. Nam lacinia turpis ac mi vulputate, in interdum dui iaculis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
                         </p>
                     <p>
-                        <Link href="/auth/signin">
+                        <Link href="/auth/login">
                             <Button variant="primary">Entrar</Button>
                         </Link>
                     </p>

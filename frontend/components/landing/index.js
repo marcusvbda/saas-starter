@@ -27,12 +27,12 @@ const LandingTemplate = ({ title, children }) => {
                     <Link href="">
                         <Navbar.Brand className="cursor-pointer">
                             <Image src="/images/logo_clean.png"
-                                height="40"
+                                height="30"
                                 alt="Pixer" />
                         </Navbar.Brand>
                     </Link>
                     <Nav className="ml-auto">
-                        <Link href="/auth/signin">
+                        <Link href="/auth/login">
                             <Button variant="outline-success">Entrar</Button>
                         </Link>
                     </Nav>
