@@ -14,13 +14,14 @@ export const isTrue = (value) => {
     return true
 }
 
-export const checkemail = email => {
+export const isValidEmail = email => {
     const value = String(email).replace(/ /g, '').trim()
     if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(value)) return false
     return true
 }
 
-export const checkpassword = password => {
-    if (password.length < 6) return false
+export const isValidPassword = password => {
+    if (!password) return false
+    if (!password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/)) return false
     return true
 }

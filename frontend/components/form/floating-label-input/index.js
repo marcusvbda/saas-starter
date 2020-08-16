@@ -4,7 +4,7 @@ import './styles.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faExclamation } from '@fortawesome/free-solid-svg-icons'
 
-const FloatingLabelInput = ({ id, type, label, description, placeholder, error, value, onChange, onBlur }) => {
+const FloatingLabelInput = ({ id, type, label, description, placeholder, error, value, onChange, onBlur, className }) => {
     const [focused, setFocused] = useState(false)
     const container = useRef('container')
 
@@ -44,8 +44,15 @@ const FloatingLabelInput = ({ id, type, label, description, placeholder, error, 
         if (onBlur) onBlur()
     }
 
+    const GetErrorIcon = () => {
+        if (!error) return ""
+        return (
+            <FontAwesomeIcon icon={faExclamation} className="text-danger error-icon" />
+        )
+    }
+
     return (
-        <Form.Group controlId={GetId()} className={`floating-label-input ${value ? 'with-content' : ''} ${error ? 'has-error' : ''} mb-4`} ref={container}>
+        <Form.Group controlId={GetId()} className={`floating-label-input ${value ? 'with-content' : ''} ${error ? 'has-error' : ''} ${className}`} ref={container}>
             <GetLabel />
             <Form.Control
                 placeholder={placeholder}
@@ -54,13 +61,12 @@ const FloatingLabelInput = ({ id, type, label, description, placeholder, error, 
                 onBlur={handleOnBlur}
                 onChange={onChange}
                 value={value}
-                className="mb-3"
             />
             <div className="form-line">
                 <div className="colored" />
             </div>
             <GetDescription />
-            <FontAwesomeIcon icon={faExclamation} className="text-danger error-icon" />
+            <GetErrorIcon />
         </Form.Group>
     )
 }

@@ -2,7 +2,6 @@ $progress_color : #007bff;
 
 .floating-label-input {
 	position: relative;
-	
 	input {
 		&.form-control {
 			border-radius: unset;
@@ -24,8 +23,8 @@ $progress_color : #007bff;
 			position: absolute;
 			margin-bottom: 0;
 			color: #162d3d;
-			transition: bottom .3s ease-in-out,font-size .3s, color .3s,font-weight .3s;
-			bottom: 15%;
+			transition: color .3s,top .3s ease-in-out,font-size .3s, color .3s,font-weight .3s;
+			top: 8px;
 		}
 	}
 	.form-line {
@@ -37,8 +36,7 @@ $progress_color : #007bff;
 		background-color: #d7d7d7;
 		transition : background-color .3s;
 		.colored {
-			transition: width .3s,height .3s;
-			background-color: $progress_color;
+			transition: width .5s,height .3s;
 			width: 0%;
 		}
 	}
@@ -51,10 +49,9 @@ $progress_color : #007bff;
 		label {
 			&.form-label{
 				padding-left:unset;
-				bottom: 100%;
+				top: -15px;
 				font-size: 10px;
 				opacity: .8;
-				transition: bottom .3s ease-in-out,font-size .3s, color .3s,font-weight .3s;
 			}
 		}
 	}
@@ -64,6 +61,7 @@ $progress_color : #007bff;
 			.colored {
 				width: 100%;
 				height: 2px;
+				background-color: $progress_color!important;
 			}
 		}
 		input {
@@ -77,35 +75,44 @@ $progress_color : #007bff;
 		}
 		label {
 			&.form-label{
+				color: #162d3d!important;
 				padding-left:unset;
-				bottom: 100%;
+				top: -15px;
 				font-size: 10px;
 				opacity: .8;
-				transition: bottom .3s ease-in-out,font-size .3s, color .3s,font-weight .3s;
 			}
+		}
+		.error-icon {
+			display: none!important;
 		}
 	}
 	.error-icon {
-		font-size: 25px!important;
+		font-size: 25px;
 		position: absolute;
 		right: 0;
 		top: 0;
 		opacity: .7;
-		display: none;
-		font-size :30px;
+		transition : display .3s;
 	}
 	&.has-error {
 		.error-icon {
-			display: block;
+			font-size: 25px;
+			position: absolute;
+			right: 0;
+			top: 0;
+			opacity: .7;
 		}
-
 		.form-line {
 			background-color: #d7d7d7;
 			.colored {
-				transition: width .3s,height .3s;
 				background-color: #ff8f8f;
 				width: 100%;
 				height: 2px;
+			}
+		}
+		label {
+			&.form-label{
+				color : #ff8f8f;
 			}
 		}
 	}

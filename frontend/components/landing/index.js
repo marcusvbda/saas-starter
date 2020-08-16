@@ -33,7 +33,7 @@ const LandingTemplate = ({ title, children }) => {
                     </Link>
                     <Nav className="ml-auto">
                         <Link href="/auth/login">
-                            <Button variant="outline-success">Entrar</Button>
+                            <Button variant="outline-success rounded-pill">Entrar</Button>
                         </Link>
                     </Nav>
                 </Container>

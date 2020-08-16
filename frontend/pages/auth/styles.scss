@@ -1,0 +1,32 @@
+.social-btn {
+    display :flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border: unset;
+    border-radius: 5px;
+    padding:0;
+    .buttonIcon {
+        display :flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        width : 45px;
+        height: 45px;
+        img {
+            height: 40px;
+        }
+    }
+    &.facebook {
+        border: 2px solid #3b5998;
+        background-color:#3b5998;
+        color : white;
+    }
+    &.google {
+        border: 2px solid #4285f4;
+        background-color:#4285f4;
+        color : white;
+    }
+}
