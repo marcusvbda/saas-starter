@@ -1,52 +1,53 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Link from 'next/Link'
 import AuthTemplate from '@/components/auth'
-import { Container, Row, Col, Form, Button, Image } from 'react-bootstrap'
+import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 import FloatingLabelInput from '@/components/form/floating-label-input'
 import { isValidEmail, isValidPassword } from '@/utils/helpers'
-import './styles.scss'
+import SocialBtn from '@/components/form/social-btn'
 
 const Login = () => {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [form, setForm] = useState({ email: "", password: "", remember: true })
+    const [error, setError] = useState({ email: null, password: null })
     const [loading, setLoading] = useState(false)
-    const [remember, setRemember] = useState(true)
-    const [errorEmail, setErrorEmail] = useState(false)
-    const [errorPassword, setErrorPassword] = useState(false)
-
-    useEffect(() => {
-        if (!email) return setErrorEmail(false)
-        const valid = isValidEmail(email)
-        if (!valid) return setErrorEmail(true)
-        return setErrorEmail(false)
-    }, [email])
-
-    useEffect(() => {
-        if (!password) return setErrorPassword(false)
-        const valid = isValidPassword(password)
-        if (!valid) return setErrorPassword(true)
-        return setErrorPassword(false)
-    }, [password])
 
     const submitLogin = e => {
         e.preventDefault()
-        if (!email || !password) return console.log("Formulario inválido")
-        if (errorEmail || errorPassword) return console.log("Formulario inválido")
+        if (!form.email || !form.password) return setError({
+            email: (form.email ? null : "Campo senha é obrigatório"),
+            password: (form.password ? null : "Campo email é obrigatório")
+        })
+        if (error.email || error.password) return console.log("Formulario inválido")
         setLoading(true)
         console.log("formulario válido")
     }
 
     const SignBtnContent = () => {
-        if (!loading) return "Entrar"
+        if (!loading) return <span>Entrar</span>
         return (<>
-            <span class="spinner-grow spinner-grow-sm mr-2" /> Entrando...
+            <span className="spinner-grow spinner-grow-sm mr-2" />
+            <span>Entrando...</span>
         </>)
+    }
+
+    const handleBlurEmail = () => {
+        if (!form.email) return setError({ ...error, email: null })
+        const valid = isValidEmail(form.email)
+        if (!valid) return setError({ ...error, email: "Digite um email válido" })
+        return setError({ ...error, email: null })
+    }
+
+    const handleBlurPassword = () => {
+        if (!form.password) return setError({ ...error, password: null })
+        const valid = isValidPassword(form.password, false)
+        if (!valid) return setError({ ...error, password: "A senha precisa conter no mínimo 6 e no maximo 20 caracteres" })
+        return setError({ ...error, password: null })
     }
 
     return (
         <AuthTemplate title="Entrar">
             <Container>
-                <h1 className="text-center">Login {errorEmail}</h1>
+                <h1 className="text-center">Login</h1>
                 <div className="text-center font-weight-light mb-5">
                     Novo no Pixer ? <Link href="/auth/signin"><a>Registre-se</a></Link> 💜
                 </div>
@@ -60,9 +61,10 @@ const Login = () => {
                                         id="email"
                                         label="Email"
                                         placeholder="Digite aqui o Email ..."
-                                        value={email}
-                                        onChange={el => setEmail(el.target.value)}
-                                        error={errorEmail}
+                                        value={form.email}
+                                        onChange={el => setForm({ ...form, email: el.target.value })}
+                                        onBlur={handleBlurEmail}
+                                        error={error.email}
                                     />
                                     <FloatingLabelInput
                                         className="mb-2"
@@ -70,15 +72,16 @@ const Login = () => {
                                         label="Senha"
                                         type="password"
                                         placeholder="Digite aqui a Senha ..."
-                                        value={password}
-                                        onChange={el => setPassword(el.target.value)}
-                                        error={errorPassword}
+                                        value={form.password}
+                                        onChange={el => setForm({ ...form, password: el.target.value })}
+                                        onBlur={handleBlurPassword}
+                                        error={error.password}
                                     />
                                     <Row>
                                         <Col className="d-flex flex-row justify-content-between">
                                             <small>
                                                 <Form.Group controlId="remeberMe">
-                                                    <Form.Check type="checkbox" label="Lembrar de mim" checked={remember} onClick={() => setRemember(!remember)} />
+                                                    <Form.Check type="checkbox" label="Lembrar de mim" checked={form.remember} onChange={() => setForm({ ...form, remember: !form.remember })} />
                                                 </Form.Group>
                                             </small>
                                             <small>
@@ -90,26 +93,22 @@ const Login = () => {
                                     </Row>
                                     <Row>
                                         <Col sm={12} lg={6}>
-                                            <Button type="submit" variant={`${loading ? 'primary' : 'outline-primary'} rounded-pill mt-4`} block disabled={loading}>
+                                            <Button
+                                                type="submit"
+                                                variant={`${loading ? 'primary' : 'outline-primary'} rounded-pill 
+                                                mt-4 d-flex flex-row align-items-center justify-content-center`}
+                                                block
+                                                disabled={loading}
+                                            >
                                                 <SignBtnContent />
                                             </Button>
                                         </Col>
                                     </Row>
                                 </form>
                             </Col>
-                            <Col sm={12} lg={6} className="px-4 d-flex flex-column justify-content-center align-content-center">
-                                <button className="social-btn facebook">
-                                    <div className="buttonIcon">
-                                        <Image src="/images/social/facebook-logo.svg" />
-                                    </div>
-                                    <div className="text-center w-100">Continuar com o Facebook</div>
-                                </button>
-                                <button className="social-btn google mt-3">
-                                    <div className="buttonIcon">
-                                        <Image src="/images/social/google-logo.svg" />
-                                    </div>
-                                    <div className="text-center w-100">Continuar com o Google</div>
-                                </button>
+                            <Col sm={12} lg={6} className="px-5 d-flex flex-column justify-content-center align-content-center py-5">
+                                <SocialBtn variant="facebook" />
+                                <SocialBtn variant="google" className="mt-3" />
                             </Col>
                         </Row>
                     </Col>

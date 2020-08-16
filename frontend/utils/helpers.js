@@ -20,8 +20,9 @@ export const isValidEmail = email => {
     return true
 }
 
-export const isValidPassword = password => {
+export const isValidPassword = (password, complex = true) => {
     if (!password) return false
-    if (!password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/)) return false
+    if (complex) if (!password.match(/^(?=.*\d)(?=.*[a-z]).{6,20}$/)) return false
+    if (!password.match(/^(?=.*\d).{6,20}$/)) return false
     return true
 }

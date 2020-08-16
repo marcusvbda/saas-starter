@@ -36,7 +36,7 @@ $progress_color : #007bff;
 		background-color: #d7d7d7;
 		transition : background-color .3s;
 		.colored {
-			transition: width .5s,height .3s;
+			transition: width .4s,height .3s;
 			width: 0%;
 		}
 	}
@@ -69,7 +69,7 @@ $progress_color : #007bff;
 				border-bottom: unset!important;
 				&::-webkit-input-placeholder{
 					color: #dbdbdb;
-					transition: color .5s;
+					transition: color .4s;
 				}
 			}
 		}

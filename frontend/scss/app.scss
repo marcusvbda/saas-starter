@@ -28,3 +28,9 @@ footer {
 		padding-bottom: 15px;
 	}
 }
+
+button {
+	&:focus {
+		outline: unset;
+	}
+}

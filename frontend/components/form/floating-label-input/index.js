@@ -11,7 +11,13 @@ const FloatingLabelInput = ({ id, type, label, description, placeholder, error, 
     useEffect(() => {
         if (focused) container.current.classList.add("focused")
         else container.current.classList.remove("focused")
-    }, [focused])
+
+        if (value) container.current.classList.add("with-content")
+        else container.current.classList.remove("with-content")
+
+        if (error) container.current.classList.add("has-error")
+        else container.current.classList.remove("has-error")
+    })
 
     const GetLabel = () => {
         if (!label) return ""
@@ -29,12 +35,23 @@ const FloatingLabelInput = ({ id, type, label, description, placeholder, error, 
         )
     }
 
-    const GetId = () => {
+    const GetErrorDescription = () => {
+        if (focused) return ""
+        if (!error) return ""
+        if (typeof error != "string") return ""
+        return (
+            <Form.Text className="text-danger error-description mt-0">
+                <small>{error}</small>
+            </Form.Text>
+        )
+    }
+
+    const getId = () => {
         if (id) return id
         return ""
     }
 
-    const GetType = () => {
+    const getType = () => {
         if (type) return type
         return "text"
     }
@@ -52,11 +69,11 @@ const FloatingLabelInput = ({ id, type, label, description, placeholder, error, 
     }
 
     return (
-        <Form.Group controlId={GetId()} className={`floating-label-input ${value ? 'with-content' : ''} ${error ? 'has-error' : ''} ${className}`} ref={container}>
+        <Form.Group controlId={getId()} className={`floating-label-input ${className}`} ref={container}>
             <GetLabel />
             <Form.Control
                 placeholder={placeholder}
-                type={GetType()}
+                type={getType()}
                 onFocus={() => setFocused(true)}
                 onBlur={handleOnBlur}
                 onChange={onChange}
@@ -65,6 +82,7 @@ const FloatingLabelInput = ({ id, type, label, description, placeholder, error, 
             <div className="form-line">
                 <div className="colored" />
             </div>
+            <GetErrorDescription />
             <GetDescription />
             <GetErrorIcon />
         </Form.Group>
