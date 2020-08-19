@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Link from 'next/Link'
+import Link from 'next/link'
 import AuthTemplate from '@/components/auth'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 import FloatingLabelInput from '@/components/form/floating-label-input'

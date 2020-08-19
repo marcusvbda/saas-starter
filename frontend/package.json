@@ -1,5 +1,5 @@
 {
-  "name": "nextjs",
+  "name": "saas-starter",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,16 +10,8 @@
     "prod": "next export",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/marcusvbda/nextjs.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/marcusvbda/nextjs/issues"
-  },
-  "homepage": "https://github.com/marcusvbda/nextjs#readme",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",

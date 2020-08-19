@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/Link'
+import Link from 'next/link'
 import { Navbar, Nav, Container, Image, Row, Col } from 'react-bootstrap'
 import Head from 'next/head'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -34,7 +34,7 @@ const AuthTemplate = ({ title, children }) => {
             <main>
                 {children}
             </main>
-            <footer className="footer text-muted">
+            <footer className="footer text-muted mt-4">
                 <Container>
                     <Row className="d-flex justify-content-center align-items-center">
                         <Col sm={12} lg={6} className="d-flex flex-column">

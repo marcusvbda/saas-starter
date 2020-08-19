@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/Link'
+import Link from 'next/link'
 import { Navbar, Nav, Button, Image, Container } from 'react-bootstrap'
 import Head from 'next/head'
 
@@ -7,7 +7,10 @@ const LandingTemplate = ({ title, children }) => {
 
     const GetYear = () => {
         const date = new Date()
-        return `2020 - ${date.getFullYear()}`
+        const start_date = '2019'
+        const current_date = date.getFullYear()
+        if (start_date == current_date) return current_date
+        return `${start_date} - ${date.getFullYear()}`
     }
 
     const GetTitle = () => {
@@ -41,7 +44,7 @@ const LandingTemplate = ({ title, children }) => {
             <main>
                 {children}
             </main>
-            <footer className="footer container text-muted">
+            <footer className="footer container text-muted mt-4">
                 <div className="d-flex flex-row justify-content-between align-items-center">
                     <Image src="/images/logo_clean.png"
                         height="25"
