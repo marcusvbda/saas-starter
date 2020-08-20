@@ -1,34 +1,32 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
-import AuthTemplate from '@/components/auth'
+import AuthTemplate from '@/src/components/auth'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
-import FloatingLabelInput from '@/components/form/floating-label-input'
-import { isValidEmail, isValidPassword } from '@/utils/helpers'
-import SocialBtn from '@/components/form/social-btn'
+import FloatingLabelInput from '@/src/components/form/floating-label-input'
+import { isValidEmail, isValidPassword } from '@/src/utils/helpers'
+import SocialBtn from '@/src/components/form/social-btn'
 
-const Signin = () => {
-    const [form, setForm] = useState({ email: "", password: "", compare_email: "", compare_password: "" })
-    const [error, setError] = useState({ email: null, password: null, compare_email: null, compare_password: null })
+const Login = () => {
+    const [form, setForm] = useState({ email: "", password: "", remember: true })
+    const [error, setError] = useState({ email: null, password: null })
     const [loading, setLoading] = useState(false)
 
     const submitLogin = e => {
         e.preventDefault()
-        if (!form.email || !form.password || !form.compare_email || !form.compare_password) return setError({
+        if (!form.email || !form.password) return setError({
             email: (form.email ? null : "Campo senha é obrigatório"),
-            password: (form.password ? null : "Campo email é obrigatório"),
-            compare_email: (form.compare_email ? null : "Campo de confirmação de email é obrigatório"),
-            compare_password: (form.compare_password ? null : "Campo de confirmação de senha é obrigatório"),
+            password: (form.password ? null : "Campo email é obrigatório")
         })
-        if (error.email || error.password || error.compare_email || error.compare_password) return console.log("Formulario inválido")
+        if (error.email || error.password) return console.log("Formulario inválido")
         setLoading(true)
         console.log("formulario válido")
     }
 
     const SignBtnContent = () => {
-        if (!loading) return <span>Registre-se</span>
+        if (!loading) return <span>Entrar</span>
         return (<>
             <span className="spinner-grow spinner-grow-sm mr-2" />
-            <span>Registrando...</span>
+            <span>Entrando...</span>
         </>)
     }
 
@@ -39,33 +37,19 @@ const Signin = () => {
         return setError({ ...error, email: null })
     }
 
-    const handleBlurCompareEmail = () => {
-        if (!form.compare_email) return setError({ ...error, compare_email: null })
-        const valid = form.email === form.compare_email
-        if (!valid) return setError({ ...error, compare_email: "Os emails digitados não coincidem" })
-        return setError({ ...error, compare_email: null })
-    }
-
     const handleBlurPassword = () => {
         if (!form.password) return setError({ ...error, password: null })
-        const valid = isValidPassword(form.password)
-        if (!valid) return setError({ ...error, password: "A senha precisa conter no mínimo 6, no maximo 20 caracteres e numéricos" })
+        const valid = isValidPassword(form.password, false)
+        if (!valid) return setError({ ...error, password: "A senha precisa conter no mínimo 6 e no maximo 20 caracteres" })
         return setError({ ...error, password: null })
     }
 
-    const handleBlurComparePassword = () => {
-        if (!form.compare_password) return setError({ ...error, compare_password: null })
-        const valid = form.password === form.compare_password
-        if (!valid) return setError({ ...error, compare_password: "As senhas digitadas não coincidem" })
-        return setError({ ...error, compare_password: null })
-    }
-
     return (
-        <AuthTemplate title="Registre-se">
+        <AuthTemplate title="Entrar">
             <Container>
-                <h1 className="text-center">Registre-se</h1>
+                <h1 className="text-center">Login</h1>
                 <div className="text-center font-weight-light mb-5">
-                    Já tem uma conta Pixer 😎 ? <Link href="/auth/login"><a>login</a></Link>
+                    Novo no Pixer ? <Link href="/auth/signin"><a>Registre-se</a></Link> 💜
                 </div>
                 <Row className="d-flex flex-row justify-content-center mb-5">
                     <Col sm={12} lg={9} className="mt-5">
@@ -83,37 +67,30 @@ const Signin = () => {
                                         error={error.email}
                                     />
                                     <FloatingLabelInput
-                                        className="mb-4"
-                                        id="compare_email"
-                                        label="Digite o email novamente"
-                                        placeholder="Digite aqui o seu email novamente..."
-                                        value={form.compare_email}
-                                        onChange={el => setForm({ ...form, compare_email: el.target.value })}
-                                        onBlur={handleBlurCompareEmail}
-                                        error={error.compare_email}
-                                    />
-                                    <FloatingLabelInput
-                                        className="mb-4"
+                                        className="mb-2"
                                         id="password"
                                         label="Senha"
                                         type="password"
-                                        placeholder="Digite aqui a sua senha ..."
+                                        placeholder="Digite aqui a Senha ..."
                                         value={form.password}
                                         onChange={el => setForm({ ...form, password: el.target.value })}
                                         onBlur={handleBlurPassword}
                                         error={error.password}
                                     />
-                                    <FloatingLabelInput
-                                        className="mb-4"
-                                        id="compare_password"
-                                        label="Digite a sua senha novamente"
-                                        type="password"
-                                        placeholder="Digite aqui a sua senha novamente ..."
-                                        value={form.compare_password}
-                                        onChange={el => setForm({ ...form, compare_password: el.target.value })}
-                                        onBlur={handleBlurComparePassword}
-                                        error={error.compare_password}
-                                    />
+                                    <Row>
+                                        <Col className="d-flex flex-row justify-content-between">
+                                            <small>
+                                                <Form.Group controlId="remeberMe">
+                                                    <Form.Check type="checkbox" label="Lembrar de mim" checked={form.remember} onChange={() => setForm({ ...form, remember: !form.remember })} />
+                                                </Form.Group>
+                                            </small>
+                                            <small>
+                                                <Link href="/auth/account-recovery">
+                                                    <a>Esqueceu sua senha?</a>
+                                                </Link>
+                                            </small>
+                                        </Col>
+                                    </Row>
                                     <Row>
                                         <Col sm={12} lg={6}>
                                             <Button
@@ -140,4 +117,4 @@ const Signin = () => {
         </AuthTemplate>
     )
 }
-export default Signin
+export default Login

@@ -1,8 +1,8 @@
 import Router from 'next/router'
 import NProgress from 'nprogress'
-import GlobalContextProvider from '@/context/globalContext'
-import { getIsMobile } from '@/utils/helpers'
-import "@/scss/app.scss"
+import GlobalContextProvider from '@/src/context/globalContext'
+import { getIsMobile } from '@/src/utils/helpers'
+import "@/src/scss/app.scss"
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
