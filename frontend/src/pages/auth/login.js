@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
-import AuthTemplate from '@/src/components/auth'
+import AuthTemplate from '@/src/components/template/auth'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 import FloatingLabelInput from '@/src/components/form/floating-label-input'
 import { isValidEmail, isValidPassword } from '@/src/utils/helpers'
@@ -55,7 +55,7 @@ const Login = () => {
                     <Col sm={12} lg={9} className="mt-5">
                         <Row>
                             <Col sm={12} lg={6} style={{ borderRight: `1px solid #e7e7e7` }} className="px-4">
-                                <form onSubmit={e => submitLogin(e)}>
+                                <Form onSubmit={e => submitLogin(e)}>
                                     <FloatingLabelInput
                                         className="mb-4"
                                         id="email"
@@ -104,7 +104,7 @@ const Login = () => {
                                             </Button>
                                         </Col>
                                     </Row>
-                                </form>
+                                </Form>
                             </Col>
                             <Col sm={12} lg={6} className="px-5 d-flex flex-column justify-content-center align-content-center py-5">
                                 <SocialBtn variant="facebook" />

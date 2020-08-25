@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import LandingTemplate from '@/src/components/landing'
+import LandingTemplate from '@/src/components/template/landing'
 
 import { Button, Jumbotron, Container, Row, Col } from 'react-bootstrap'
 
